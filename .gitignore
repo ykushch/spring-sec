@@ -4,3 +4,7 @@
 # Package Files #
 *.jar
 *.war
+
+# Idea files
+/SpringSec.iml
+.idea
