@@ -6,5 +6,5 @@
 *.war
 
 # Idea files
-/SpringSec.iml
+*.iml
 .idea
