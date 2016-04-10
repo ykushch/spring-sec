@@ -30,7 +30,7 @@ public class UserController {
         return new ModelAndView("users/list", "users", users);
     }
 
-    @RequestMapping("{id}")
+    @RequestMapping("/{id}")
     public ModelAndView view(@PathVariable("id") User user) {
         return new ModelAndView("users/view", "user", user);
     }
@@ -54,18 +54,18 @@ public class UserController {
         return new ModelAndView("redirect:/{user.id}", "user.id", user.getId());
     }
 
-    @RequestMapping("foo")
+    @RequestMapping("/foo")
     public String foo() {
         throw new RuntimeException("Expected exception in controller");
     }
 
-    @RequestMapping(value = "delete/{id}")
+    @RequestMapping(value = "/delete/{id}")
     public ModelAndView delete(@PathVariable("id") Long id) {
         this.userRepository.deleteUser(id);
         return new ModelAndView("redirect:/");
     }
 
-    @RequestMapping(value = "modify/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/modify/{id}", method = RequestMethod.GET)
     public ModelAndView modifyForm(@PathVariable("id") User user) {
         return new ModelAndView("users/form", "user", user);
     }
