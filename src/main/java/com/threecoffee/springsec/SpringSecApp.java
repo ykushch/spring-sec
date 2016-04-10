@@ -1,5 +1,6 @@
 package com.threecoffee.springsec;
 
+import com.threecoffee.springsec.config.SecurityConfiguration;
 import com.threecoffee.springsec.domain.User;
 import com.threecoffee.springsec.repository.InMemoryUserRepositoryImpl;
 import com.threecoffee.springsec.repository.UserRepository;
@@ -29,6 +30,6 @@ public class SpringSecApp {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringSecApp.class, args);
+        SpringApplication.run(new Class[] {SecurityConfiguration.class, SpringSecApp.class}, args);
     }
 }
