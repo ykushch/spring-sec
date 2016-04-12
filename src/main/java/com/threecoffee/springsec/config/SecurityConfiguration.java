@@ -21,7 +21,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/delete/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().and()
-                .httpBasic();
+                .formLogin().loginPage("/login").permitAll().loginProcessingUrl("/doLogin")
+                .and()
+                .csrf().disable();
     }
 }
