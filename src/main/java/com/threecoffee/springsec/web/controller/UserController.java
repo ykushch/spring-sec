@@ -39,7 +39,7 @@ public class UserController {
         return new ModelAndView("users/view", "user", user);
     }
 
-    @RequestMapping(params = "form", method = RequestMethod.GET)
+    @RequestMapping(params = "form", method = RequestMethod.POST)
     public String createForm(@ModelAttribute User user) {
         return "users/form";
     }
@@ -52,10 +52,10 @@ public class UserController {
             return new ModelAndView("users/form", "formErrors", result.getAllErrors());
         }
 
-        user = this.userRepository.save(user);
+        user = userService.registerNewUser(user);
         redirect.addFlashAttribute("globalMessage", "Successfully created a new user");
 
-        return new ModelAndView("redirect:/{user.id}", "user.id", user.getId());
+        return new ModelAndView("redirect:/user/{user.id}", "user.id", user.getId());
     }
 
     @RequestMapping("/foo")
